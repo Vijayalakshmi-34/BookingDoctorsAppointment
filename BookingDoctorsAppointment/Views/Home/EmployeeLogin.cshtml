@@ -1,0 +1,29 @@
+﻿@model BookingDoctorsAppointment.ViewModels.EmployeeLoginViewModel
+@{
+    ViewBag.Title = "Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2 style="text-align:center;padding-top:20px">Employee Login</h2>
+    <div style="padding-left:310px">
+        @using (Html.BeginForm())
+        {
+            <div>
+                @Html.LabelFor(e => e.UserId)
+                @Html.TextBoxFor(e => e.UserId, new { @class = "form-control", autocomplete = "off", required = true })
+                @Html.ValidationMessageFor(e => e.UserId)
+            </div>
+            <div>
+                @Html.LabelFor(e => e.Password)
+                @Html.PasswordFor(e => e.Password, new { @class = "form-control", autocomplete = "off", required = true })
+                @Html.ValidationMessageFor(e => e.Password)
+            </div>
+
+            <div>
+                <br />
+                <input type="submit" value="Login" id="CmdSubmit" class="btn btn-primary" />
+            </div>
+        }
+    </div>
+</div>

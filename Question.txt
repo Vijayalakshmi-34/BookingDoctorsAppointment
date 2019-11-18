@@ -1,0 +1,80 @@
+System for Booking Doctor’s Appointment
+
+HCL group has recently extended its business to provide healthcare services also. The details of service offerings are available on HCL website (hcl.com)
+
+We are currently building the patient’s portal, most of it is already working.
+
+We want to develop a ‘Doctor’s Appointment Booking’ module for this portal. 
+Initially this facility will be available only for HCL employees and their family.
+
+The steps for booking appointment are as follows:
+
+1) Provide identification (through HCL-email or Employee Code)
+
+2) Select a Health Center’s location
+
+3) Search a doctor based on specialization (it can also be a named search)
+
+4) Display doctor’s credentials, summary of expertise
+
+5) Check doctor’s availability (date wise, time slots)
+
+6) Book the appointment and display confirmation message on portal
+
+7) Send appointment booking notification through email (or SMS)
+
+The system should also provide facility to change the appointment date/time or cancel it altogether.
+
+There may be a change in doctor’s availably (travelling, emergency etc.). 
+In such cases the doctor informs about his/her unavailability to consult patients on specific date(s); but this 
+functionality is out-of-scope for current hackathon exercise. 
+However, the system should be able to notify the employee about cancellation of their earlier confirmed appointment, so that they can re-schedule.
+
+The system should allow to book an appointment for next three months.
+
+To provide the above functionality as a standalone application, we expect it to have
+
+a. Home Page
+
+It should have some generic information about HCL Healthcare, upcoming event(s) or promotion(s) and past achievements; 
+primarily static information (may be borrowed from official site). It should also have the login feature.
+
+b. Search page
+
+To search/select a Healthcare Center and search a doctor based on specialization
+
+c. Doctor details and Available time-slots
+
+It should show some details about the doctor including experience, qualifications. 
+It should also show the available time slots for next two days, but at the same time there should be a facility to pick a future date/time up to next three months.
+
+One can book an appointment from this page and see the confirmation message.
+
+Another version of this same page should open, when the user attempts to modify or cancel the appointment. 
+Basic rules (like no cancellation for past date appointments) should be enforced.
+
+d. System should send email (or SMS) notification w.r.t. confirmed appointment(s), along with the address of the Healthcare Center where patient can meet the doctor.
+
+Guidelines for the Application
+
+A. It should be a website developed on .Net Framework 4.5 (or 4.0) using C#, ASP.Net MVC, Web API, SQL, HTML and JavaScript. 
+For building the UI screens Angular or Bootstrap or JQuery can be used. You may use Entity Framework or write SQL queries/ stored procedure; both are allowed. 
+You can also use ASP.Net Web forms, instead of MVC.
+
+B. All information w.r.t. Center Locations, Specialization, Doctor details, 
+Available dates/time and Booked appointments should be populated from database and must not be hard-coded.
+
+C. The system should be able to send notification to the patient (through email, SMS or web-based notification), anything is fine. 
+This feature should be used to inform about cancelled appointment due to doctor’s unavailability.
+
+D. We do not expect you to develop registration for this hackathon exercise (it is already in place and working properly). 
+But for this hackathon, you can populate some dummy data (w.r.t. Login/password) directly in the database.
+
+E. A simple but working page is preferred over a non-working but good looking page.
+
+F. You are allowed to alter the functionality after discussing it with the Product Owner.
+
+G. For demonstration purposes, to simulate the doctor’s unavailability (due to emergency) you can directly update the database and 
+manually run the send-cancellation-notification program.
+
+Some relevant implementations (from other portals) are provided only
