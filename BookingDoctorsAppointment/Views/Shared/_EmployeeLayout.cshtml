@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,9 +7,11 @@
     <title>@ViewBag.Title - Online Booking Doctors Appointment</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
-<body>`
+<body>
+    @*<div>
+        @RenderBody()
+    </div>*@
     <div class="navbar bg-primary fixed-top navbar-dark navbar-expand-lg">
         <div class="container">
             <div class="navbar-header">
@@ -19,9 +22,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Employee", "EmployeeLogin", "Home", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Doctor", "DoctorLogin", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Index", "Index", "Employee", null, new { @class = "nav-link" })</li>
+                    @*<li>@Html.ActionLink("Employee", "EmployeeLogin", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Doctor", "DoctorLogin", "Home", null, new { @class = "nav-link" })</li>*@
                 </ul>
                 @*@Html.Partial("_LoginPartial")*@
             </div>

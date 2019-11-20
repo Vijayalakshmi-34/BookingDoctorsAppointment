@@ -18,8 +18,9 @@ namespace BookingDoctorsAppointment.Models
         public DateTime? DateOfBirth { get; set; }
         public string Password { get; set; }
         public string InsuranceCardNumber { get; set; }
+        public string Location { get; set; }
 
-        public Location Locations { get; set; }
-        public int LocationId { get; set; }
+        //public Location Locations { get; set; }
+        //public int LocationId { get; set; }
     }
 }

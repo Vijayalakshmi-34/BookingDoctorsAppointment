@@ -1,0 +1,34 @@
+﻿@model IEnumerable<BookingDoctorsAppointment.Models.Doctor>
+
+@{
+    ViewBag.Title = "DisplayDoctors";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<h2>DisplayDoctors</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Doctor Name</th>
+        <th>Qualification</th>
+        <th>Specialization</th>
+        <th>Experience</th>
+        <th>Contact Details</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.FirstName @item.LastName</td>
+        <td>@item.Qualification</td>
+        <td>@item.Specialization</td>
+        <td>@item.Experience</td>
+        <td>@item.EmailId</td>
+        <td>View Time Slot</td>
+    </tr>
+}
+
+</table>

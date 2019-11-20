@@ -15,7 +15,7 @@ namespace BookingDoctorsAppointment.ViewModels
         public string UserId { get; set; }
 
         [Required, StringLength(12, ErrorMessage = "Password should be 5 to 10 characters", MinimumLength = 5)]
-        [Display(Name ="Pass Word")]
+        [Display(Name ="Password")]
         public string PassWord { get; set; }
     }
 }

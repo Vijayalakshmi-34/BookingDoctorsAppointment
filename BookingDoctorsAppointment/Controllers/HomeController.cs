@@ -35,18 +35,17 @@ namespace BookingDoctorsAppointment.Controllers
         public ActionResult EmployeeLogin(EmployeeLoginViewModel LoginFromViewModel)
         {
             var emp = dbContext.Employees.FirstOrDefault(e => e.EmailId == LoginFromViewModel.UserId || e.SapId.ToString() == LoginFromViewModel.UserId);
-
-            if (!ModelState.IsValid)
+            if(emp==null)
             {
-                return View();
+                return Content("Invalid Sap Id or Mail Id");
             }
-            if (emp.Password == LoginFromViewModel.Password)
+            else if (emp.Password == LoginFromViewModel.Password)
             {
                 return RedirectToAction("Index", "Employee");
             }
             else
             {
-                return HttpNotFound();
+                return Content("Incorrect Password....Try again!!!!");
             }
         }
         [HttpGet]
@@ -58,17 +57,16 @@ namespace BookingDoctorsAppointment.Controllers
         public ActionResult DoctorLogin(DoctorLoginViewModel LoginFromViewModel)
         {
             var emp = dbContext.Doctors.FirstOrDefault(e => e.EmailId == LoginFromViewModel.UserId || e.DoctorId.ToString() == LoginFromViewModel.UserId);
-
-            if (!ModelState.IsValid)
+            if (emp == null)
             {
-                return View();
+                return Content("Invalid Doctor Id or Mail Id");
             }
-            if (emp.PassWord == LoginFromViewModel.PassWord)
+            else if (emp.PassWord == LoginFromViewModel.PassWord)
             {
                 return RedirectToAction("Index", "Doctor");
             }
 
-            return Content("Invalid User Information and password");
+            return Content("Incorrect Password....Try again!!!!");
         }
     }
 }

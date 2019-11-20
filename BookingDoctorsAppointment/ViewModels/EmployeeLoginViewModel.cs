@@ -14,8 +14,8 @@ namespace BookingDoctorsAppointment.ViewModels
         [Display(Name ="Sap Id / Email Id")]
         public string UserId { get; set; }
 
-        [Required,StringLength(12,ErrorMessage ="Password should be 5 to 10 characters",MinimumLength =5)]
-        [Display(Name ="Pass Word")]
+        [Required,StringLength(10,ErrorMessage ="Password should be 5 to 10 characters",MinimumLength =5)]
+        [Display(Name ="Password")]
         public string Password { get; set; }
     }
 }

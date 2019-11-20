@@ -204,6 +204,42 @@
     <Compile Include="Migrations\201911180943414_CreateAppointmentDetailsTable.Designer.cs">
       <DependentUpon>201911180943414_CreateAppointmentDetailsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911181144079_CreatSpecializationTable.cs" />
+    <Compile Include="Migrations\201911181144079_CreatSpecializationTable.Designer.cs">
+      <DependentUpon>201911181144079_CreatSpecializationTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911181152200_updatetable.cs" />
+    <Compile Include="Migrations\201911181152200_updatetable.Designer.cs">
+      <DependentUpon>201911181152200_updatetable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911181158179_dummy1.cs" />
+    <Compile Include="Migrations\201911181158179_dummy1.Designer.cs">
+      <DependentUpon>201911181158179_dummy1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911181202491_dummy11.cs" />
+    <Compile Include="Migrations\201911181202491_dummy11.Designer.cs">
+      <DependentUpon>201911181202491_dummy11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911181203343_CreateSpecialization.cs" />
+    <Compile Include="Migrations\201911181203343_CreateSpecialization.Designer.cs">
+      <DependentUpon>201911181203343_CreateSpecialization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911200951118_UpdateDoctorTable.cs" />
+    <Compile Include="Migrations\201911200951118_UpdateDoctorTable.Designer.cs">
+      <DependentUpon>201911200951118_UpdateDoctorTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911200952568_UpdateDoctorTable1.cs" />
+    <Compile Include="Migrations\201911200952568_UpdateDoctorTable1.Designer.cs">
+      <DependentUpon>201911200952568_UpdateDoctorTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911201134405_UpdateEmployeeTable.cs" />
+    <Compile Include="Migrations\201911201134405_UpdateEmployeeTable.Designer.cs">
+      <DependentUpon>201911201134405_UpdateEmployeeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911201136105_UpdateEmployeeTable1.cs" />
+    <Compile Include="Migrations\201911201136105_UpdateEmployeeTable1.Designer.cs">
+      <DependentUpon>201911201136105_UpdateEmployeeTable1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppointmentDetails.cs" />
@@ -212,9 +248,11 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Specialization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\DoctorLoginViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeHomePageViewModel.cs" />
     <Compile Include="ViewModels\EmployeeLoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -274,11 +312,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\EmployeeLogin.cshtml" />
     <Content Include="Views\Home\DoctorLogin.cshtml" />
+    <Content Include="Views\Shared\_EmployeeLayout.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\DisplayDoctors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Doctor\" />
-    <Folder Include="Views\Employee\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -305,6 +345,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911180943414_CreateAppointmentDetailsTable.resx">
       <DependentUpon>201911180943414_CreateAppointmentDetailsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911181144079_CreatSpecializationTable.resx">
+      <DependentUpon>201911181144079_CreatSpecializationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911181152200_updatetable.resx">
+      <DependentUpon>201911181152200_updatetable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911181158179_dummy1.resx">
+      <DependentUpon>201911181158179_dummy1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911181202491_dummy11.resx">
+      <DependentUpon>201911181202491_dummy11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911181203343_CreateSpecialization.resx">
+      <DependentUpon>201911181203343_CreateSpecialization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911200951118_UpdateDoctorTable.resx">
+      <DependentUpon>201911200951118_UpdateDoctorTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911200952568_UpdateDoctorTable1.resx">
+      <DependentUpon>201911200952568_UpdateDoctorTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911201134405_UpdateEmployeeTable.resx">
+      <DependentUpon>201911201134405_UpdateEmployeeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911201136105_UpdateEmployeeTable1.resx">
+      <DependentUpon>201911201136105_UpdateEmployeeTable1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

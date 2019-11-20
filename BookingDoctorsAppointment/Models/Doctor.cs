@@ -13,12 +13,17 @@ namespace BookingDoctorsAppointment.Models
         public string LastName { get; set; }
         public string Qualification { get; set; }
         public byte? Experience { get; set; }
-        public string Specialization { get; set; } 
         public long? MobileNumber { get; set; }
         public string EmailId { get; set; }
         public string PassWord { get; set; }
         public bool? IsAvailable { get; set; }
-        public Location Locations { get; set; }
-        public int LocationId { get; set; }
+
+        public string Location { get; set; }
+        public string Specialization { get; set; }
+
+        //public Location Locations { get; set; }
+        //public int LocationId { get; set; }
+        //public Specialization Specializations { get; set; }
+        //public int SpecializationId { get; set; }
     }
 }
