@@ -45,7 +45,7 @@ namespace BookingDoctorsAppointment.Controllers
             }
         }
         public ActionResult Doctors()
-        {
+        { 
             return View();
         }
         [NonAction]

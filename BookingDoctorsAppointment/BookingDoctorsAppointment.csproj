@@ -181,6 +181,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -265,6 +266,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\d10.jpg" />
+    <Content Include="Images\d11.jpg" />
+    <Content Include="Images\d12.jpg" />
+    <Content Include="Images\d13.jpg" />
+    <Content Include="Images\d14.jpg" />
+    <Content Include="Images\d15.jpg" />
+    <Content Include="Images\d18.jpg" />
+    <Content Include="Images\d19.jpg" />
+    <Content Include="Images\d2.png" />
+    <Content Include="Images\d21.jpg" />
+    <Content Include="Images\d22.jpg" />
+    <Content Include="Images\d23.jpg" />
+    <Content Include="Images\d8.jpg" />
+    <Content Include="Images\d9.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -289,7 +304,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -315,9 +329,11 @@
     <Content Include="Views\Shared\_EmployeeLayout.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\DisplayDoctors.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Appointment\" />
     <Folder Include="Views\Doctor\" />
   </ItemGroup>
   <ItemGroup>

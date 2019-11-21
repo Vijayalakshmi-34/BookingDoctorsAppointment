@@ -1,34 +1,37 @@
 ﻿@model IEnumerable<BookingDoctorsAppointment.Models.Doctor>
 
 @{
-    ViewBag.Title = "DisplayDoctors";
+    ViewBag.Title = "Doctors List";
     Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
 }
 
-<h2>DisplayDoctors</h2>
+<h4 style="padding-top : 20px;font-size:40px">Doctors List</h4>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>Doctor Name</th>
-        <th>Qualification</th>
-        <th>Specialization</th>
-        <th>Experience</th>
-        <th>Contact Details</th>
-        <th></th>
-    </tr>
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<br />
+<div class="row">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>@item.FirstName @item.LastName</td>
-        <td>@item.Qualification</td>
-        <td>@item.Specialization</td>
-        <td>@item.Experience</td>
-        <td>@item.EmailId</td>
-        <td>View Time Slot</td>
-    </tr>
-}
 
-</table>
+    @foreach (var item in Model)
+    {
+        <div class="col">
+
+            <div class="card border-primary mb-2" style="max-width: 30rem;text-align:center">
+                <div><h2 style="padding-top : 10px;padding-left:10px" class="card-title">@item.FirstName @item.LastName</h2></div>
+                <div class="card-body card-text" style="font-size:25px">
+                    <div>Qualification : @item.Qualification</div>
+                    <div>Specialization : @item.Specialization</div>
+                    <div>Experience : @item.Experience</div>
+                    <div>Contact Details : @item.EmailId</div>
+                    <div>Qualification : @item.Qualification</div>
+                    <div>@Html.ActionLink("View Time Slots", "Index", "Appointment", new { id = item.Id }, new { @class = "btn btn-primary" })</div>
+
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
