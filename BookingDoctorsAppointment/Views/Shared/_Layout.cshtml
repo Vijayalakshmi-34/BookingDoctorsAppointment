@@ -8,23 +8,23 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>`
+<body>
     <div class="navbar bg-primary fixed-top navbar-dark navbar-expand-lg">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                @Html.ActionLink("BOOKING DOCTORS APPOINTMENT", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Booking Doctors Appointment", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Employee", "EmployeeLogin", "Home", null, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Doctor", "DoctorLogin", "Home", null, new { @class = "nav-link" })</li>
-                    
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Employee", "EmployeeLogin", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Doctor", "DoctorLogin", "Home", null, new { @class = "nav-link" })</li>
+
                 </ul>
-                @*@Html.Partial("_LoginPartial")*@
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>

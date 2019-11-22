@@ -9,9 +9,11 @@ namespace BookingDoctorsAppointment.Controllers
     public class AppointmentController : Controller
     {
         // GET: Appointment
-        public ActionResult Index()
+
+        [HttpGet]
+        public ActionResult Index(int id)
         {
-            return Content("Hello");
+            return View();
         }
     }
 }
