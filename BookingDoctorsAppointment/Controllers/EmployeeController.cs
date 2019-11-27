@@ -6,23 +6,23 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using BookingDoctorsAppointment.Interfaces;
 
 namespace BookingDoctorsAppointment.Controllers
 {
     public class EmployeeController : Controller
     {
         private ApplicationDbContext dbContext = null;
+        IEmployeeRepository repository = null;
         public EmployeeController()
         {
             dbContext = new ApplicationDbContext();
         }
-        protected override void Dispose(bool disposing)
+        public EmployeeController(IEmployeeRepository Repository)
         {
-            if (disposing)
-            {
-                dbContext.Dispose();
-            }
+            repository = Repository;
         }
+        
         // GET: Employee
         [HttpGet]
         public ActionResult Index()
@@ -34,7 +34,7 @@ namespace BookingDoctorsAppointment.Controllers
         [HttpPost]
         public ActionResult Index(EmployeeHomePageViewModel EmployeeFromView)
         {
-            var doctors = dbContext.Doctors.Where(d => d.Location == EmployeeFromView.Location && d.Specialization == EmployeeFromView.Specialization).ToList();
+            var doctors = repository.GetDoctorsList(EmployeeFromView);
             if (doctors.Count!=0)
             {
                 return View("DisplayDoctors", doctors);
@@ -44,10 +44,7 @@ namespace BookingDoctorsAppointment.Controllers
                 return Content("Doctors not found");
             }
         }
-        public ActionResult Doctors()
-        { 
-            return View();
-        }
+        
         [NonAction]
         public IEnumerable<SelectListItem> ListCity()
         {

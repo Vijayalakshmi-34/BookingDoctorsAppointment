@@ -32,9 +32,7 @@ namespace BookingDoctorsAppointment.Models
 
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
-        public DbSet<AppointmentDetails> AppointmentDetails { get; set; }
-        public DbSet<Location> Locations { get; set; }
-        public DbSet<Specialization> Specializations { get; set; }
+        public DbSet<AppointmentDetails> AppointmentDetails { get; set; }        
 
     }
 }

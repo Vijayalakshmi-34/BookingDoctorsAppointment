@@ -1,4 +1,5 @@
-﻿using BookingDoctorsAppointment.Models;
+﻿using BookingDoctorsAppointment.Interfaces;
+using BookingDoctorsAppointment.Models;
 using BookingDoctorsAppointment.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -10,18 +11,16 @@ namespace BookingDoctorsAppointment.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext dbContext = null;
+        IHomeRepository repository = null;
         public HomeController()
         {
-            dbContext = new ApplicationDbContext();
+
         }
-        protected override void Dispose(bool disposing)
+        public HomeController(IHomeRepository Repository)
         {
-            if (disposing)
-            {
-                dbContext.Dispose();
-            }
+            repository = Repository;
         }
+
         public ActionResult Index()
         {
             return View();
@@ -34,7 +33,7 @@ namespace BookingDoctorsAppointment.Controllers
         [HttpPost]
         public ActionResult EmployeeLogin(EmployeeLoginViewModel LoginFromViewModel)
         {
-            var emp = dbContext.Employees.FirstOrDefault(e => e.EmailId == LoginFromViewModel.UserId || e.SapId.ToString() == LoginFromViewModel.UserId);
+            var emp = repository.GetEmployee(LoginFromViewModel);
             if(emp==null)
             {
                 return Content("Invalid Sap Id or Mail Id");
@@ -56,12 +55,12 @@ namespace BookingDoctorsAppointment.Controllers
         [HttpPost]
         public ActionResult DoctorLogin(DoctorLoginViewModel LoginFromViewModel)
         {
-            var emp = dbContext.Doctors.FirstOrDefault(e => e.EmailId == LoginFromViewModel.UserId || e.DoctorId.ToString() == LoginFromViewModel.UserId);
-            if (emp == null)
+            var doc = repository.GetDoctor(LoginFromViewModel);
+            if (doc == null)
             {
                 return Content("Invalid Doctor Id or Mail Id");
             }
-            else if (emp.PassWord == LoginFromViewModel.PassWord)
+            else if (doc.PassWord == LoginFromViewModel.PassWord)
             {
                 return RedirectToAction("Index", "Doctor");
             }
