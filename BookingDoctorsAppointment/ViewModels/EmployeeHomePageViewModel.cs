@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookingDoctorsAppointment.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,6 @@ namespace BookingDoctorsAppointment.ViewModels
         //public string Country { get; set; }
         public string Location { get; set; }
         public string Specialization { get; set; }
-
+        public Doctor Doctor { get; set; }
     }
 }

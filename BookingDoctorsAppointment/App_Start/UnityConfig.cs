@@ -17,6 +17,7 @@ namespace BookingDoctorsAppointment
 
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IHomeRepository, HomeRepository>();
+            container.RegisterType<IEmployeeRepository, EmployeeRepository>();
             
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

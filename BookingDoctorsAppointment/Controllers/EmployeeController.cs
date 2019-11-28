@@ -12,14 +12,15 @@ namespace BookingDoctorsAppointment.Controllers
 {
     public class EmployeeController : Controller
     {
-        private ApplicationDbContext dbContext = null;
+        private ApplicationDbContext dbContext;
         IEmployeeRepository repository = null;
         public EmployeeController()
         {
-            dbContext = new ApplicationDbContext();
+            
         }
-        public EmployeeController(IEmployeeRepository Repository)
+        public EmployeeController(IEmployeeRepository Repository,ApplicationDbContext dbContext)
         {
+            this.dbContext = dbContext;
             repository = Repository;
         }
         
@@ -34,7 +35,7 @@ namespace BookingDoctorsAppointment.Controllers
         [HttpPost]
         public ActionResult Index(EmployeeHomePageViewModel EmployeeFromView)
         {
-            var doctors = repository.GetDoctorsList(EmployeeFromView);
+            var doctors = repository.GetDoctorsList(EmployeeFromView);            
             if (doctors.Count!=0)
             {
                 return View("DisplayDoctors", doctors);
@@ -44,7 +45,18 @@ namespace BookingDoctorsAppointment.Controllers
                 return Content("Doctors not found");
             }
         }
-        
+        public ActionResult SearchByDoctorName(string search)
+        {
+            var doctor = dbContext.Doctors.Where(m => m.FirstName.Contains(search) || m.LastName.Contains(search)).ToList();
+            if (doctor.Count != 0)
+            {
+                return View("DisplayDoctors", doctor);
+            }
+            else
+            {
+                return Content("Doctors not found");
+            }
+        }
         [NonAction]
         public IEnumerable<SelectListItem> ListCity()
         {
