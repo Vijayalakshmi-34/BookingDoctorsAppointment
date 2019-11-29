@@ -1,48 +1,23 @@
 ﻿
 @{
-    Layout = null;
-    //Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+    // Layout = null;
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+    // Layout = "~/Views/Shared/_Layout.cshtml";
+    @*<a href="~/Views/Shared/DatePicker.html">~/Views/Shared/DatePicker.html</a>*@
 }
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
 
-
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    @*<title>jQuery UI Datepicker - Restrict date range</title>*@
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    @*<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>*@
-    @*<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
-    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />*@
-    <script>
+    <link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css" )" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/jquery-3.3.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")"></script>
+    <script type="text/javascript">
         $(function () {
-            $("#datepicker").datepicker({
-                dateFormat:"dd//mm/yy",
+            $('.date-picker').datepicker({
                 minDate: 0,
-                maxDate: "+3M "
+                maxDate: "+3M"
             });
-        });
+        })
     </script>
-</head>
-<body>
-
-    <div>Date: <input type="text" id="datepicker"></div>
-
-
-</body>
-</html>
-@*@section scripts{
-    <script>
-        $(document).ready(function () {
-            $("#datepicker").datepicker({
-                    minDate: 0,
-                    maxDate: "+3M "
-            });
-        });
-    </script>
-    }*@
+    <div>
+        @Html.TextBox("Enter date", "", new { @class="date-picker"})
+    </div>

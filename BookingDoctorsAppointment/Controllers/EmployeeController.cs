@@ -33,9 +33,9 @@ namespace BookingDoctorsAppointment.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(EmployeeHomePageViewModel EmployeeFromView)
+        public ActionResult Index(DoctorsListViewModel DoctorsFromView)
         {
-            var doctors = repository.GetDoctorsList(EmployeeFromView);            
+            var doctors = repository.GetDoctorsList(DoctorsFromView);            
             if (doctors.Count!=0)
             {
                 return View("DisplayDoctors", doctors);
@@ -47,7 +47,7 @@ namespace BookingDoctorsAppointment.Controllers
         }
         public ActionResult SearchByDoctorName(string search)
         {
-            var doctor = dbContext.Doctors.Where(m => m.FirstName.Contains(search) || m.LastName.Contains(search)).ToList();
+            var doctor = dbContext.Doctors.Where(m => m.DoctorFirstName.Contains(search) || m.DoctorLastName.Contains(search)).ToList();
             if (doctor.Count != 0)
             {
                 return View("DisplayDoctors", doctor);

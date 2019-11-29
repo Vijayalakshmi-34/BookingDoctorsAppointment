@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
 }
 
-<h4 style="padding-top : 20px;font-size:40px">Doctors List</h4>
+<h3 style="padding-top : 20px;font-size:40px">Doctors List</h3>
 
 @*<p>
         @Html.ActionLink("Create New", "Create")
@@ -18,8 +18,8 @@
     {
         <div class="col-md-6">
             <div class="card border-primary mb-2" style="max-width: 30rem;text-align:center">
-                <h2 style="padding-top : 10px;padding-left:10px" class="card-title">@item.FirstName @item.LastName</h2>
-                <div class="card-body card-text" style="font-size:25px">
+                <h3 style="padding-top : 10px;padding-left:10px" class="card-title">@item.DoctorFirstName @item.DoctorLastName</h3>
+                <div class="card-body card-text" style="font-size:20px">
                     <div>Qualification : @item.Qualification</div>
                     <div>Specialization : @item.Specialization</div>
                     <div>Experience : @item.Experience</div>

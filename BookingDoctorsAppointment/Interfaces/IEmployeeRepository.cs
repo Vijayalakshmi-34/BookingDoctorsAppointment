@@ -10,6 +10,6 @@ namespace BookingDoctorsAppointment.Interfaces
 {
     public interface IEmployeeRepository
     {
-        List<Doctor> GetDoctorsList(EmployeeHomePageViewModel EmployeeFromView);
+        List<Doctor> GetDoctorsList(DoctorsListViewModel EmployeeFromView);
     }
 }

@@ -9,8 +9,8 @@ namespace BookingDoctorsAppointment.Models
     {
         public int Id { get; set; }
         public long DoctorId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string DoctorFirstName { get; set; }
+        public string DoctorLastName { get; set; }
         public string Qualification { get; set; }
         public byte? Experience { get; set; }
         public long? MobileNumber { get; set; }
@@ -21,9 +21,5 @@ namespace BookingDoctorsAppointment.Models
         public string Location { get; set; }
         public string Specialization { get; set; }
 
-        //public Location Locations { get; set; }
-        //public int LocationId { get; set; }
-        //public Specialization Specializations { get; set; }
-        //public int SpecializationId { get; set; }
     }
 }

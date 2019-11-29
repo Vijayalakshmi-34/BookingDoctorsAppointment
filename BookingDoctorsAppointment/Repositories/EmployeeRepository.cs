@@ -15,9 +15,9 @@ namespace BookingDoctorsAppointment.Repositories
         {
             dbContext = new ApplicationDbContext();
         }
-        public List<Doctor> GetDoctorsList(EmployeeHomePageViewModel EmployeeFromView)
+        public List<Doctor> GetDoctorsList(DoctorsListViewModel DoctorsFromView)
         {
-            List<Doctor> doctors = dbContext.Doctors.Where(d => d.Location == EmployeeFromView.Location && d.Specialization == EmployeeFromView.Specialization).ToList();
+            List<Doctor> doctors = dbContext.Doctors.Where(d => d.Location == DoctorsFromView.Location && d.Specialization == DoctorsFromView.Specialization).ToList();
             return doctors;
         }
     }
