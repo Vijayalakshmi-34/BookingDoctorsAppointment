@@ -1,0 +1,29 @@
+﻿@model IEnumerable<OnlineDoctorsAppointmentBooking.Models.AppointmentDetails>
+@{
+    ViewBag.Title = "MyAppointments";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+
+<h2 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align:center">My Appointments</h2>
+<table class="table table-primary">
+    <tr>
+        <th>Patient Name</th>
+        <th>Appoinment Number</th>
+        <th>Appointment Date</th>
+        <th>Appointment Time</th>
+        <th>Patient Email Id</th>
+        <th>Patient Mobile Number</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Employee.EmployeeFirstName @item.Employee.EmployeeLastName</td>
+            <td>@item.AppointmentNumber</td>
+            <td>@item.AppointmentDate</td>
+            <td>@item.TimeSlots.TimeSlot.ToString()</td>
+            <td>@item.Employee.EmailId</td>
+            <td>@item.Employee.MobileNumber</td>
+        </tr>
+    }
+</table>
+

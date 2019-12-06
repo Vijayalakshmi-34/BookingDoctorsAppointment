@@ -4,26 +4,30 @@
     Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
 }
 
-<h2>BookingDetails</h2>
+<h2 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;text-align:center">Booking Details</h2>
 <table class="table table-primary">
     <tr>
-        <th>Appoinment Number</th>
-        <th>Employee Name</th>
+        <th>Appoinment Number</th>        
         <th>Appointment Date</th>
         <th>Appointment Time</th>
         <th>Status of Booking</th>
         <th>Doctor Name</th>
+        <th>Delete Appointment</th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
             <td>@item.AppointmentNumber</td>
-            <td>@item.Employee.EmployeeFirstName</td>
             <td>@item.AppointmentDate</td>
-            <td>@item.TimeSlots.TimeSlot</td>
+            <td>@item.TimeSlots.TimeSlot.ToString()</td>
             <td>@item.StatusOfBooking</td>
-            <td>@item.Doctor.DoctorFirstName</td>
+            <td>@item.Doctor.DoctorFirstName @item.Doctor.DoctorLastName</td>
+            <td>
+                @Html.ActionLink("Cancel Appointment","CancelAppointment","Employee",new { id=item.Id},new { @class="btn btn-primary"})
+            </td>
         </tr>
+
     }
+
 </table>
 

@@ -26,7 +26,6 @@ namespace OnlineBookingDoctorsAppointment.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult EmployeeLogin(ViewModel_Login loginViewModel)
         {
             if (!ModelState.IsValid)
@@ -70,7 +69,6 @@ namespace OnlineBookingDoctorsAppointment.Controllers
             return View(employee);
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Update(Employee employee)
         {
             if (!ModelState.IsValid)
@@ -104,7 +102,6 @@ namespace OnlineBookingDoctorsAppointment.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult BookAppointment(Doctor doctor)
         {
             if (!ModelState.IsValid)
@@ -124,7 +121,6 @@ namespace OnlineBookingDoctorsAppointment.Controllers
             }
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult SearchByDoctorName(string search)
         {
             if (!ModelState.IsValid)
@@ -145,7 +141,7 @@ namespace OnlineBookingDoctorsAppointment.Controllers
         }
         public ActionResult DisplayDoctors(Doctor doctor)
         {
-            
+
             return View(doctor);
         }
         [HttpGet]
@@ -159,24 +155,43 @@ namespace OnlineBookingDoctorsAppointment.Controllers
         [HttpPost]
         public ActionResult TimeSlots(AppointmentDetails appointment)
         {
+            var details = dbContext.AppointmentDetails.Where(a => a.AppointmentDate == appointment.AppointmentDate).ToList();
             Random random = new Random();
-            //var appointmentInDb = dbContext.AppointmentDetails.FirstOrDefault(a => a.Id == appointment.Id);
-            //if (appointmentInDb == null)
-            //{
-                appointment.AppointmentNumber = random.Next(1000, 9000);
-              //  appointment.AppointmentDate = appointment.AppointmentDate;
-                appointment.TimeSlotsId = appointment.TimeSlotsId;
-                appointment.StatusOfBooking = "Booked";
-                appointment.EmployeeId = (int)Session["employeeId"];
-                appointment.DoctorId = (int)Session["doctorId"];
-            //}
-            dbContext.AppointmentDetails.Add(appointment);
+            appointment.AppointmentNumber = random.Next(1000, 9000);
+            appointment.StatusOfBooking = "Booked";
+            appointment.EmployeeId = (int)Session["employeeId"];
+            appointment.DoctorId = (int)Session["doctorId"];
+            if (details.Count != 0)
+            {
+                var record = details.Where(a => a.TimeSlotsId == appointment.TimeSlotsId).ToList();
+                if (record.Count != 0)
+                {
+                    var patient = record.Where(p => p.EmployeeId == appointment.EmployeeId && p.DoctorId == appointment.DoctorId).ToList();
+                    if (patient.Count != 0)
+                    {
+                        return Content("This slot was already booked");
+                    }
+                }
+            }
+                dbContext.AppointmentDetails.Add(appointment);
+                dbContext.SaveChanges();
+            return RedirectToAction("Confirmation");         
+        }
+        public ActionResult Confirmation()
+        {
+            return View();
+        }
+        public ActionResult CancelAppointment(int id)
+        {
+            var patients = dbContext.AppointmentDetails.Find(id);
+            dbContext.AppointmentDetails.Remove(patients);
             dbContext.SaveChanges();
-            return RedirectToAction("BookingDetails");
+            return View();
         }
         public ActionResult BookingDetails()
         {
-            var details = dbContext.AppointmentDetails.Include(a => a.TimeSlots).Include(a => a.Employee).Include(a => a.Doctor).ToList();
+            int id = (int)Session["employeeId"];
+            var details = dbContext.AppointmentDetails.Include(a => a.TimeSlots).Include(a => a.Employee).Include(a => a.Doctor).Where(a=>a.EmployeeId==id).ToList();
             return View(details);
         }
         [NonAction]
@@ -210,46 +225,16 @@ namespace OnlineBookingDoctorsAppointment.Controllers
         public IEnumerable<SelectListItem> ListTimeSlot()
         {
             var TimeSlot = (from m in dbContext.TimeSlots.AsEnumerable()
-                              select new SelectListItem
-                              {
-                                  Text = m.TimeSlot,
-                                  Value = m.Id.ToString()
-                              }).ToList();
+                            select new SelectListItem
+                            {
+                                Text = m.TimeSlot,
+                                Value = m.Id.ToString()
+                            }).ToList();
 
             TimeSlot.Insert(0, new SelectListItem { Text = "---Select---", Value = "0", Disabled = true, Selected = true });
 
             return TimeSlot;
         }
-        //[NonAction]
-        //public IEnumerable<string> SlotTimings()
-        //{
-        //    List<string> SlotTime = new List<string>
-        //    {
-        //        "10:00am - 10:30am",
-        //        "10:30am - 11:00am",
-        //        "11:00am - 11:30am",
-        //        "11:30am - 12:00pm",
-        //        "02:30pm - 03:00pm",
-        //        "03:00pm - 03:30pm",
-        //        "03:30pm - 04:00pm",
-        //        "04:00pm - 04:30pm",
-        //        "07:00pm - 07:30pm",
-        //        "07:30pm - 08:00pm",
-        //        "08:00pm - 08:30pm",
-        //        "08:30pm - 09:00pm"
-        //    };
-        //    return SlotTime;
-        //}
-        //public IEnumerable<SelectListItem> ListTimeSlot()
-        //{
-        //    var timeslot = new List<SelectListItem>
-        //    {
-        //        new SelectListItem{Text="-----Select a Time Slot-----",Value="0",Disabled=true,Selected=true},
-        //        new SelectListItem{Text="10am-12pm",Value="10am-12pm" },
-        //        new SelectListItem{Text="2.30pm-4.30pm",Value="2.30pm-4.30pm" },
-        //        new SelectListItem{Text="7pm-9pm",Value="7pm-9pm" }
-        //    };
-        //    return timeslot;
-        //}
+        
     }
 }

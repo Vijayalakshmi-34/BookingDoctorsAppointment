@@ -8,9 +8,7 @@
 <h2 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:30px">Update Details</h2>
 
 @using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
+{ 
     <div class="form-horizontal">
         <div>
             @Html.ActionLink("Back to Details", "MyDetails", "Employee", null, new { @class = "btn btn-primary" })

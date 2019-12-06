@@ -294,12 +294,14 @@
     <Content Include="Images\Achievements\image8minorsurgeries.png" />
     <Content Include="Images\Achievements\img10.png" />
     <Content Include="Images\Achievements\img9solidorgan.png" />
+    <Content Include="Images\Capture.PNG" />
     <Content Include="Images\Carousel\carousel.jfif" />
     <Content Include="Images\Carousel\carousel1.jpg" />
     <Content Include="Images\Carousel\carousel2.jpg" />
     <Content Include="Images\Carousel\carousel3.jpg" />
     <Content Include="Images\Carousel\carousel4.jpg" />
     <Content Include="Images\HCL Healthcare Logo.ico" />
+    <Content Include="Images\HCL.jpg" />
     <Content Include="Images\Home\Admin.jfif" />
     <Content Include="Images\Home\doctor.png" />
     <Content Include="Images\Home\employee.png" />
@@ -368,6 +370,9 @@
     <Content Include="Views\Admin\ViewDoctors.cshtml" />
     <Content Include="Views\Employee\TimeSlots.cshtml" />
     <Content Include="Views\Employee\BookingDetails.cshtml" />
+    <Content Include="Views\Doctor\MyAppointments.cshtml" />
+    <Content Include="Views\Employee\Confirmation.cshtml" />
+    <Content Include="Views\Employee\CancelAppointment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

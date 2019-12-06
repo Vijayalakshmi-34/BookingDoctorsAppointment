@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace OnlineBookingDoctorsAppointment.Controllers
 {
@@ -21,7 +22,6 @@ namespace OnlineBookingDoctorsAppointment.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult DoctorLogin(ViewModel_Login loginViewModel)
         {
             if (!ModelState.IsValid)
@@ -30,24 +30,43 @@ namespace OnlineBookingDoctorsAppointment.Controllers
             }
             else
             {
-                var doctor = dbContext.Doctors.FirstOrDefault(e => e.EmailId == loginViewModel.UserId || e.DoctorId.ToString() == loginViewModel.UserId);
-                if (doctor == null)
+                if (!ModelState.IsValid)
                 {
-                    return Content("Invalid Sap Id or Mail Id");
-                }
-                else if (doctor.PassWord == loginViewModel.Password)
-                {
-                    return RedirectToAction("Index");
+                    return View();
                 }
                 else
                 {
-                    return Content("Incorrect Password....Try again!!!!");
+                    var doctor = dbContext.Doctors.FirstOrDefault(e => e.EmailId == loginViewModel.UserId || e.DoctorId.ToString() == loginViewModel.UserId);
+                    if (doctor == null)
+                    {
+                        loginViewModel.LoginErrorMessage = "Invalid Sap Id or Mail Id";
+                        return View("DoctorLogin", loginViewModel);
+                    }
+                    else if (doctor.PassWord == loginViewModel.Password)
+                    {
+                        Session["doctor"] = doctor;
+                        Session["doctorId"] = doctor.Id;
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        loginViewModel.LoginErrorMessage = "Incorrect Password....Try again!!!!";
+                        return View("DoctorLogin", loginViewModel);
+                    }
                 }
             }
         }
         public ActionResult Index()
         {
-            return View();
+            var doctor = (Doctor)Session["doctor"];
+            return View(doctor);
         }
+        public ActionResult MyAppointments()
+        {
+            int id = (int)Session["doctorId"];
+            var appointments = dbContext.AppointmentDetails.Include(a=>a.Doctor).Include(a=>a.Employee).Include(a=>a.TimeSlots).Where(a => a.DoctorId == id).ToList();
+            return View(appointments);
+        }
+       
     }
 }
